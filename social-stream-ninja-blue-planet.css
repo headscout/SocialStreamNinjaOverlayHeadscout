@@ -1,0 +1,118 @@
+/*
+  Social Stream Ninja - Blue Planet Theme
+  Paste into: Custom CSS
+  Goal: clean, easy-to-read multichat with cool blue "planet" style.
+*/
+
+:root {
+  --bp-bg: rgba(4, 15, 36, 0.84);
+  --bp-bg-soft: rgba(10, 33, 77, 0.62);
+  --bp-border: rgba(110, 184, 255, 0.32);
+  --bp-name: #9ed5ff;
+  --bp-text: #ebf6ff;
+  --bp-muted: #bfdfff;
+  --bp-shadow: 0 14px 40px rgba(0, 20, 55, 0.5);
+}
+
+/* Overall layout */
+html,
+body {
+  background: transparent !important;
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  color: var(--bp-text);
+  text-rendering: optimizeLegibility;
+}
+
+/* Works with common SSN classes + fallback chat item containers */
+.chatmessage,
+.message,
+.chat-item,
+#chat > div,
+#output > div {
+  position: relative;
+  margin: 8px 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--bp-border);
+  background:
+    radial-gradient(circle at 95% 8%, rgba(140, 225, 255, 0.2), transparent 28%),
+    linear-gradient(160deg, var(--bp-bg), var(--bp-bg-soft));
+  box-shadow: var(--bp-shadow);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  overflow-wrap: anywhere;
+}
+
+/* Planet glow ring */
+.chatmessage::before,
+.message::before,
+.chat-item::before,
+#chat > div::before,
+#output > div::before {
+  content: "";
+  position: absolute;
+  right: -18px;
+  top: -16px;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(190, 244, 255, 0.95), rgba(60, 125, 228, 0.45) 45%, rgba(5, 20, 70, 0.05) 75%);
+  box-shadow:
+    0 0 0 1px rgba(158, 213, 255, 0.22),
+    0 0 35px rgba(102, 188, 255, 0.35);
+  opacity: 0.65;
+}
+
+/* Username */
+.name,
+.username,
+.author,
+.meta .name {
+  color: var(--bp-name) !important;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 10px rgba(110, 194, 255, 0.35);
+}
+
+/* Message text */
+.body,
+.message-text,
+.text,
+.msg {
+  color: var(--bp-text) !important;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* Platform/time tags if present */
+.source,
+.platform,
+.timestamp,
+.time {
+  color: var(--bp-muted) !important;
+  opacity: 0.9;
+  font-size: 0.82rem;
+}
+
+/* Compact spacing on tiny overlays */
+@media (max-width: 720px) {
+  .chatmessage,
+  .message,
+  .chat-item,
+  #chat > div,
+  #output > div {
+    margin: 6px 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  .body,
+  .message-text,
+  .text,
+  .msg {
+    font-size: 0.95rem;
+  }
+}
